@@ -1,42 +1,42 @@
 {
-  "name": "teamwork_frontend",
-  "version": "1.0.0",
-  "description": "Frontend for the Teamwork API ",
-  "main": "index.js",
+    "name": "teamwork_frontend",
+    "version": "0.0.1",
+    "description": "Frontend for the Teamwork API ",
+    "main": "index.js",
     "scripts": {
-      "start": "react-scripts start",
-      "build": "react-scripts build",
-      "test": "react-scripts test",
-      "eject": "react-scripts eject"
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject"
     },
     "eslintConfig": {
-      "extends": "react-app"
+        "extends": "react-app"
     },
     "browserslist": {
-      "production": [
-        ">0.2%",
-        "not dead",
-        "not op_mini all"
-      ],
-      "development": [
-        "last 1 chrome version",
-        "last 1 firefox version",
-        "last 1 safari version"
-      ]
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
     },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/leokamwathi/Teamwork_frontend.git"
-  },
-  "author": "Leo Kamwathi",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/leokamwathi/Teamwork_frontend/issues"
-  },
-      "dependencies": {
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/leokamwathi/Teamwork_frontend.git"
+    },
+    "author": "Leo Kamwathi",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/leokamwathi/Teamwork_frontend/issues"
+    },
+    "dependencies": {
         "react": "^16.12.0",
         "react-dom": "^16.12.0",
         "react-scripts": "3.2.0"
-      },
-  "homepage": "https://github.com/leokamwathi/Teamwork_frontend#readme"
+    },
+    "homepage": "https://github.com/leokamwathi/Teamwork_frontend#readme"
 }
