@@ -57,8 +57,6 @@ class LoginFormPage extends Component {
   }
 
    render() {
-    localStorage.setItem('token', this.state.token)
-    localStorage.setItem('userId', this.state.userId)
     if(this.state.loggedIn){
        return <Redirect to="/" />
     }
