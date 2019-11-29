@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from 'mdbreact';
 import { Redirect } from "react-router-dom";
 
+// Fix #4 Employee can login and get a token.
 class LoginFormPage extends Component {
   constructor() {
     super();
     const token = localStorage.getItem('token')
     this.state = {
-      email: "gwen.stacey@teamwork.com",
-      password: "spidergwen",
+      email: '',
+      password: '',
       token,
       userId: '',
       loggedIn:false
@@ -49,7 +50,10 @@ class LoginFormPage extends Component {
         })
         
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+      console.log(err)
+      alert('Invalid username or password')
+    });
   }
 
    render() {
