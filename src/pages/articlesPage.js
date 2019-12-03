@@ -1,21 +1,21 @@
 import React,{ Component } from "react";
-import { Redirect } from "react-router-dom";
-import FeedArticle from '../component/feedArticle'
-import FeedGif from '../component/feedGif'
+import ArticlePost from '../component/articlePost'
 import { MDBContainer, MDBRow } from 'mdbreact';
-import NavBar from '../component/navBar'
 import {APIendpoint} from '../config/variables'
 
 class FeedPage extends Component {
   constructor() {
     super();
     this.state = {
-      feed: []
+      feed:[]
     };
   }
 getFeed = () => {
   return new Promise((resolve,reject)=>{
-    fetch(APIendpoint +'/feed', {
+
+    const articleId = this.props.match.params.articleId
+    console.log("ARTICLE_ID:",articleId);
+    fetch(APIendpoint + '/articles/'+articleId, {
       method: 'GET',
       headers: {
         'authorization': `Bearer ${localStorage.getItem('token')} 4`,
@@ -23,16 +23,18 @@ getFeed = () => {
         'Content-Type': 'application/json'
       }
     })
+
     .then(res => {
         res.json().then((data)=>{
-          const result = data.data.map((post)=>{
+            const post = data.data
+          console.log('DATA-ARTICLE',JSON.stringify(post));
+          let result
           if(post.articleId){
-            return (<FeedArticle key= {post.articleId} post={post}></FeedArticle>)
+            result =  (<ArticlePost key= {post.articleId} post={post}></ArticlePost>)
           }else{
-            return (<FeedGif key={post.gifId} post={post}></FeedGif>)
+            result =  (<h2>Article post not found</h2>)
           }
-          })
-          console.log('FEED', result);
+          console.log('Article', result);
             resolve(result)
         })
     })
@@ -42,17 +44,12 @@ getFeed = () => {
     });
   })}
   
-componentDidMount() {
-    if(this.state.feed.length===0){
+
+render(){
+  if(this.state.feed.length===0){
     this.getFeed().then((data)=>{
       this.setState({feed:data})
     }).catch((err)=>console.log(err))
-  }
-}
-render(){
-  const token = localStorage.getItem('token')
-  if(!token){
-      return <Redirect to="/signin" />
   }
   return ( 
     <>

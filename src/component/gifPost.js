@@ -1,5 +1,6 @@
 import React from "react";
-import {MDBBtn,MDBCardTitle,MDBCol,MDBCard,MDBCardBody,MDBCardImage } from 'mdbreact';
+import { MDBCardTitle,MDBCol,MDBCard,MDBCardBody,MDBCardImage } from 'mdbreact';
+import CommentsPage from '../pages/commentsPage'
 
 const FeedGif = (props) => {
   const link = "/gifs/"+ props.post.gifId
@@ -12,7 +13,7 @@ const FeedGif = (props) => {
             </div>
           <MDBCardTitle>{props.post.title}</MDBCardTitle>
           <MDBCardImage className="img-fluid" src={props.post.imageUrl} waves />
-          <MDBBtn href={link}>View</MDBBtn>
+          <CommentsPage gifId ={props.post.gifId} />
         </MDBCardBody>
       </MDBCard>
     </MDBCol>

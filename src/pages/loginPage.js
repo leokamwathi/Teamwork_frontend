@@ -1,17 +1,15 @@
 import React, { Component } from "react";
-import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from 'mdbreact';
+import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn,MDBCard,MDBCardBody} from 'mdbreact';
 import { Redirect } from "react-router-dom";
+import {APIendpoint} from '../config/variables'
 
 // Fix #4 Employee can login and get a token.
 class LoginFormPage extends Component {
   constructor() {
     super();
-    const token = localStorage.getItem('token')
     this.state = {
       email: '',
       password: '',
-      token,
-      userId: '',
       loggedIn:false
     };
   }
@@ -24,10 +22,7 @@ class LoginFormPage extends Component {
 
   sendForm = () => {
 
-    // http://localhost:3337/api/v1/auth/signin
-    // https://teamwork-leo.herokuapp.com/
-    // console.log('STATE',this.state);
-    fetch('https://teamwork-leo.herokuapp.com/api/v1/auth/signin', {
+    fetch(APIendpoint + '/auth/signin', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -39,15 +34,23 @@ class LoginFormPage extends Component {
       })
     })
     .then(res => {
+      console.log('RAW RES', res);
         res.json().then((data)=>{
+          console.log('RAW DATA:', data)
             console.log('DATA:', `${data.data.token} ${data.data.userId}`)
-            const token = data.data.token
-            const userId = data.data.userId
-            localStorage.setItem('token', token)
-            localStorage.setItem('userId', userId)
-            this.setState({token})
+
+            localStorage.removeItem('token')
+            localStorage.removeItem('userId')
+          if(data.data.token){
+            localStorage.setItem('token', data.data.token)
+            localStorage.setItem('userId', data.data.userId)
+          }
+            console.log("LOCAL TOKEN",localStorage.getItem('token'))
             this.setState({loggedIn:true})
-        })
+        }).catch(err => {
+            console.log(err)
+            alert('Invalid username or password')
+        });
         
     })
     .catch(err => {
@@ -64,8 +67,10 @@ class LoginFormPage extends Component {
     return (
 <MDBContainer>
       <MDBRow>
-        <MDBCol md="6">
-          <form>
+        <MDBCol md="12">
+          <MDBCard style={{ margin: "10%" }}>
+        <MDBCardBody>
+          <form onSubmit = {this.sendForm}>
             <p className="h5 text-center mb-4">Sign in</p>
             <div className="grey-text">
               <MDBInput
@@ -77,6 +82,7 @@ class LoginFormPage extends Component {
                 error="wrong"
                 success="right"
                 name="email"
+                autocomplete="email" 
                 value={this.state.email}
                 onInput={this.handleInput}
               />
@@ -85,6 +91,7 @@ class LoginFormPage extends Component {
                 icon="lock"
                 group
                 type="password"
+                autocomplete="password" 
                 validate
                 name="password"
                 value={this.state.password}
@@ -95,6 +102,8 @@ class LoginFormPage extends Component {
               <MDBBtn onClick={this.sendForm}>Login</MDBBtn>
             </div>
           </form>
+          </MDBCardBody>
+          </MDBCard>
         </MDBCol>
       </MDBRow>
     </MDBContainer>

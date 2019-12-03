@@ -5,7 +5,7 @@ class TemplatePage extends React.Component {
   render() {
     return (
       <h1>
-        React Documentation
+        React is Awesome
       </h1>
     )
   }
