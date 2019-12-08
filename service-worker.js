@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Teamwork_frontend/precache-manifest.912fc721574ea3bb870b0aea4116363f.js"
+  "/Teamwork_frontend/precache-manifest.205e2f391df22509a51a67a30db833c5.js"
 );
 
 self.addEventListener('message', (event) => {
