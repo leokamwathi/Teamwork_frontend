@@ -6,6 +6,7 @@ import { MDBContainer, MDBRow } from 'mdbreact';
 import NavBar from '../component/navBar'
 import {APIendpoint} from '../config/variables'
 
+// Fix #5 Employee can view feed
 class FeedPage extends Component {
   constructor() {
     super();
