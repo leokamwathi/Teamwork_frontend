@@ -11,6 +11,7 @@ class CommentsPage extends Component {
     super();
     this.state = {
       comments: [],
+      checkedComments:false,
       postId:null
     };
   }
@@ -47,16 +48,16 @@ getComments = () => {
   })}
   
 reLoadComments(){
-    this.setState({comments:[]})
+  this.setState({ comments: [], checkedComments: false})
 }
 render(){
   const token = localStorage.getItem('token')
   if(!token){
       return <Redirect to="/signin" />
   }
-  if(this.state.comments.length===0){
+  if (this.state.comments.length === 0 && this.state.checkedComments){
     this.getComments().then((data)=>{
-      this.setState({comments:data})
+      this.setState({ comments: data, checkedComments:true})
     }).catch((err)=>console.log(err))
   }
   return ( 

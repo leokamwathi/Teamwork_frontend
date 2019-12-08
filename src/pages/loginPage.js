@@ -82,7 +82,7 @@ class LoginFormPage extends Component {
                 error="wrong"
                 success="right"
                 name="email"
-                autocomplete="email" 
+                autoComplete="email" 
                 value={this.state.email}
                 onInput={this.handleInput}
               />
@@ -91,7 +91,7 @@ class LoginFormPage extends Component {
                 icon="lock"
                 group
                 type="password"
-                autocomplete="password" 
+                autoComplete="password" 
                 validate
                 name="password"
                 value={this.state.password}

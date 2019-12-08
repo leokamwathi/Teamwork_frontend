@@ -10,9 +10,18 @@ class FeedPage extends Component {
   constructor() {
     super();
     this.state = {
+      isReRender:false,
       feed: []
     };
   }
+reRender(){
+  const isReRe = !this.state.isReRender
+  console.log("I AM RENDER");
+  this.setState({isReRender:isReRe})
+    this.getFeed().then((data) => {
+      this.setState({ feed: data })
+    }).catch((err) => console.log(err))
+}
 getFeed = () => {
   return new Promise((resolve,reject)=>{
     fetch(APIendpoint +'/feed', {
@@ -27,7 +36,7 @@ getFeed = () => {
         res.json().then((data)=>{
           const result = data.data.map((post)=>{
           if(post.articleId){
-            return (<FeedArticle key= {post.articleId} post={post}></FeedArticle>)
+            return (<FeedArticle key={post.articleId} post={post} reRender={() => this.reRender()} isRender={this.state.isReRender}></FeedArticle>)
           }else{
             return (<FeedGif key={post.gifId} post={post}></FeedGif>)
           }

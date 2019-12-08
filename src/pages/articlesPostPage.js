@@ -80,7 +80,7 @@ class ArticlesPostPage extends Component {
                 error="wrong"
                 success="right"
                 name="title"
-                autocomplete="title" 
+                autoComplete="title" 
                 value={this.state.title}
                 onInput={this.handleInput}
               />
@@ -92,7 +92,7 @@ class ArticlesPostPage extends Component {
                 error="wrong"
                 success="right"
                 name="post"
-                autocomplete="post" 
+                autoComplete="post" 
                 value={this.state.post}
                 onInput={this.handleInput}
               />

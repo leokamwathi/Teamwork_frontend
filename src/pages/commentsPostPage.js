@@ -67,7 +67,7 @@ class CommentsPostPage extends Component {
                 type="textarea"
                 rows="2"
                 name="comment"
-                autocomplete="comment" 
+                autoComplete="comment" 
                 label="Enter Your Comment"
                 icon="pencil-alt"
                 value={this.state.comment}
@@ -75,7 +75,7 @@ class CommentsPostPage extends Component {
               />
             </div>
             <div className="text-right">
-              <MDBBtn onClick={this.sendForm}>Post</MDBBtn>
+              <MDBBtn onClick={()=>this.sendForm()}>Post</MDBBtn>
             </div>
           </form>
         </MDBCol>

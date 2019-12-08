@@ -82,7 +82,7 @@ class GifsPostPage extends Component {
                 error="wrong"
                 success="right"
                 name="title"
-                autocomplete="title" 
+                 autoComplete="title" 
                 value={this.state.title}
                 onInput={this.handleInput}
               />

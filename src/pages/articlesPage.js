@@ -7,6 +7,7 @@ class FeedPage extends Component {
   constructor() {
     super();
     this.state = {
+      isReRender:false,
       feed:[]
     };
   }
