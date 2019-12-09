@@ -36,21 +36,21 @@ class Routes extends React.Component {
   }
 
   //WARNING! To be deprecated in React v17. Use componentDidMount instead.
-  componentWillMount() {
-    // setTimeout(() => {
-    //   this.setState({ token: localStorage.getItem('token') })
-    //   console.log('I ROUTER CWM setTimeOUT', this.state.token);
-    // }, 2000)
-  }
+  // componentWillMount() {
+  //   // setTimeout(() => {
+  //   //   this.setState({ token: localStorage.getItem('token') })
+  //   //   console.log('I ROUTER CWM setTimeOUT', this.state.token);
+  //   // }, 2000)
+  // }
 
   render() {
 
-    const singinLink = "/signin"
-    if (!this.state.token){
-      if (window.location.pathname !== '/signin'){
-        return <Redirect to={singinLink}/>
-      }
-    }
+    // const singinLink = "/signin"
+    // if (!this.state.token){
+    //   if (window.location.pathname && (window.location.pathname.split('/')[1] !== 'signin' || window.location.pathname.split('/')[2] !== 'signin')){
+    //     return <Redirect to={singinLink}/>
+    //   }
+    // }
 //render={(props) => <Dashboard {...props} isAuthed={true} />}
 //render={(props) => <LogoutPage {...props} reponame={this.props.reponame} />}
     return (

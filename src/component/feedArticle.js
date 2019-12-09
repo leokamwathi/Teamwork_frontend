@@ -7,7 +7,14 @@ import FlagButton from '../component/flagButton'
 //   // console.log('Article ID Flaged' + articleId);
 // }
 const FeedArticle = (props) => {
-   const link = "/articles/"+ props.post.articleId
+
+  
+  let linkAppend = "/";
+  if (window.location.pathname.split('/')[1] === 'Teamwork_frontend') {
+    linkAppend = "/Teamwork_frontend/"
+  }
+
+  const link = linkAppend + "articles/"+ props.post.articleId
    // 
   // const flagDisabled = () => { return props.post.flaged == true ? true:false}
   return (

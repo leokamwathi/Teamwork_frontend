@@ -8,7 +8,14 @@ import FlagButton from '../component/flagButton'
 // }
 
 const FeedGif = (props) => {
-  const link = "/gifs/"+ props.post.gifId
+
+  
+  let linkAppend = "/";
+  if (window.location.pathname.split('/')[1] === 'Teamwork_frontend') {
+    linkAppend = "/Teamwork_frontend/"
+  }
+  
+  const link = linkAppend+"gifs/"+ props.post.gifId
  // const flagDisabled = () => { return props.post.flaged == true ? true : false }
   return (
       <MDBCol md="8">

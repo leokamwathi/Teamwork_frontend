@@ -28,11 +28,11 @@ componentDidMount(){
   // }, 2000)
 }
 
-componentWillMount() {
- // this.setState({ token: localStorage.getItem('token') })
-  // console.log('wum',localStorage.getItem('token'));
+// componentWillMount() {
+//  // this.setState({ token: localStorage.getItem('token') })
+//   // console.log('wum',localStorage.getItem('token'));
 
-  }
+//   }
 render() {
   setTimeout(() => {
     this.setState({ token: localStorage.getItem('token') })
