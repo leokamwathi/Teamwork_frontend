@@ -3,7 +3,6 @@ import { Redirect } from "react-router-dom";
 import FeedArticle from '../component/feedArticle'
 import FeedGif from '../component/feedGif'
 import { MDBContainer, MDBRow } from 'mdbreact';
-import NavBar from '../component/navBar'
 import {APIendpoint} from '../config/variables'
 
 // Fix #5 Employee can view feed
@@ -17,7 +16,7 @@ class FeedPage extends Component {
   }
 reRender(){
   const isReRe = !this.state.isReRender
-  console.log("I AM RENDER");
+ // console.log("I AM RENDER");
   this.setState({isReRender:isReRe})
     this.getFeed().then((data) => {
       this.setState({ feed: data })
@@ -42,7 +41,7 @@ getFeed = () => {
             return (<FeedGif key={post.gifId} post={post}></FeedGif>)
           }
           })
-          console.log('FEED', result);
+          // console.log('FEED', result);
             resolve(result)
         })
     })

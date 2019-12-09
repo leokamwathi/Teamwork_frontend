@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn,MDBCard,MDBCardBody } from 'mdbreact';
 import { Redirect } from "react-router-dom";
-import NavBar from '../component/navBar'
 import {APIendpoint} from '../config/variables'
 
 // Fix #4 Employee can login and get a token.
@@ -45,7 +44,7 @@ class ArticlesPostPage extends Component {
     })
     .then(res => {
         res.json().then((data)=>{
-            console.log('DATA:', JSON.stringify(data.data))
+           // console.log('DATA:', JSON.stringify(data.data))
             this.setState({articleId:data.data.articleId})
         })
         

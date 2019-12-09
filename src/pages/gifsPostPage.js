@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn,MDBCard,MDBCardBody } from 'mdbreact';
 import { Redirect } from "react-router-dom";
-import NavBar from '../component/navBar'
 import {APIendpoint} from '../config/variables'
 
 // Fix #4 Employee can login and get a token.
@@ -23,7 +22,7 @@ class GifsPostPage extends Component {
   }
 
   sendForm = () => {
-    console.log(this.fileInputHandler," <<:>> ",this.fileInputHandler.current);
+    // console.log(this.fileInputHandler," <<:>> ",this.fileInputHandler.current);
     if (!this.state.title || !this.fileInputHandler.current.files[0]){
         alert('Enter valid Title or File ')
         return
@@ -47,7 +46,7 @@ class GifsPostPage extends Component {
     })
     .then(res => {
         res.json().then((data)=>{
-            console.log('DATA:',data.data.gifId, JSON.stringify(data.data))
+            // console.log('DATA:',data.data.gifId, JSON.stringify(data.data))
             this.setState({gifId:data.data.gifId})
         })
         

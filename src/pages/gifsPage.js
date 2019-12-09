@@ -27,14 +27,14 @@ getGifFeed = () => {
     .then(res => {
         res.json().then((data)=>{
             const post = data.data
-          console.log('DATA-ARTICLE',JSON.stringify(post));
+          // console.log('DATA-ARTICLE',JSON.stringify(post));
           let result
           if(post.gifId){
                 result =  (<GifPost key={post.gifId} post={post}></GifPost>)
           }else{
              result =  (<h2>Gif post not found</h2>)
           }
-          console.log('Gif', result);
+          // console.log('Gif', result);
             resolve(result)
         })
     })

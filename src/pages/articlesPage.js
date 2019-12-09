@@ -15,7 +15,7 @@ getFeed = () => {
   return new Promise((resolve,reject)=>{
 
     const articleId = this.props.match.params.articleId
-    console.log("ARTICLE_ID:",articleId);
+    // console.log("ARTICLE_ID:",articleId);
     fetch(APIendpoint + '/articles/'+articleId, {
       method: 'GET',
       headers: {
@@ -28,14 +28,14 @@ getFeed = () => {
     .then(res => {
         res.json().then((data)=>{
             const post = data.data
-          console.log('DATA-ARTICLE',JSON.stringify(post));
+         //  console.log('DATA-ARTICLE',JSON.stringify(post));
           let result
           if(post.articleId){
             result =  (<ArticlePost key= {post.articleId} post={post}></ArticlePost>)
           }else{
             result =  (<h2>Article post not found</h2>)
           }
-          console.log('Article', result);
+          // console.log('Article', result);
             resolve(result)
         })
     })

@@ -34,10 +34,10 @@ class LoginFormPage extends Component {
       })
     })
     .then(res => {
-      console.log('RAW RES', res);
+      // console.log('RAW RES', res);
         res.json().then((data)=>{
-          console.log('RAW DATA:', data)
-            console.log('DATA:', `${data.data.token} ${data.data.userId}`)
+          // console.log('RAW DATA:', data)
+           //  console.log('DATA:', `${data.data.token} ${data.data.userId}`)
 
             localStorage.removeItem('token')
             localStorage.removeItem('userId')
@@ -45,7 +45,7 @@ class LoginFormPage extends Component {
             localStorage.setItem('token', data.data.token)
             localStorage.setItem('userId', data.data.userId)
           }
-            console.log("LOCAL TOKEN",localStorage.getItem('token'))
+           //  console.log("LOCAL TOKEN",localStorage.getItem('token'))
             this.setState({loggedIn:true})
         }).catch(err => {
             console.log(err)

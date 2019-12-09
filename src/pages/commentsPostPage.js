@@ -41,10 +41,10 @@ class CommentsPostPage extends Component {
     })
     .then(res => {
         res.json().then((data)=>{
-            console.log('DATA:', data)
+            // console.log('DATA:', data)
             this.setState({comment:''})
             this.props.reLoadComments()
-        }).catch((err)=>console.log('ERROR!!!!',err))
+        }).catch((err)=>console.log(err))
     })
     .catch(err => {
       console.log(err)

@@ -22,23 +22,47 @@ class Routes extends React.Component {
       tag: '',
       token:localStorage.getItem('token'),
     };
+  
   }
+//WARNING! To be deprecated in React v17. Use componentDidMount instead.
+
+  componentDidMount() {
+    // console.log('component_dm', this.state.token, localStorage.getItem('token'));
+    // this.setState({token:localStorage.getItem('token')})
+    // setTimeout(() => {
+    //   this.setState({ token: localStorage.getItem('token') })
+    //   console.log('I ROUTER CDM setTimeOUT', this.state.token);
+    // }, 2000)
+  }
+
+  //WARNING! To be deprecated in React v17. Use componentDidMount instead.
+  componentWillMount() {
+    // setTimeout(() => {
+    //   this.setState({ token: localStorage.getItem('token') })
+    //   console.log('I ROUTER CWM setTimeOUT', this.state.token);
+    // }, 2000)
+  }
+
   render() {
+
+    const singinLink = "/signin"
     if (!this.state.token){
       if (window.location.pathname !== '/signin'){
-        return <Redirect to="/signin"/>
+        return <Redirect to={singinLink}/>
       }
     }
-
+//render={(props) => <Dashboard {...props} isAuthed={true} />}
+//render={(props) => <LogoutPage {...props} reponame={this.props.reponame} />}
     return (
         <>
-      <NavBar/>
+      <NavBar reponame = {this.props.reponame} prop_token={this.state.token}/>
       <Switch>
         {/* FREE */}
+        
         <Route path='/signin' component={LoginPage} />
-        <Route path='/signout' component={LogoutPage} />
+          <Route path='/signout' render={(props) => <LogoutPage {...props} reponame={this.props.reponame} />} />
         <Route path='/post-article' component={ArticlesPostPage} />
-        <Route path='/post-gif' component={GifsPostPage} />
+          <Route path='/post-gif' component={GifsPostPage} />
         <Route path='/articles/:articleId' component={ArticlesPage} />
         <Route path='/gifs/:gifId' component={GifsPage} />
         

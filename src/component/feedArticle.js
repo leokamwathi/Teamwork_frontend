@@ -2,14 +2,14 @@ import React from "react";
 import { MDBCardText,MDBBtn,MDBCardTitle,MDBCol,MDBCard,MDBCardBody } from 'mdbreact';
 import FlagButton from '../component/flagButton'
 
-const handleFlag = (props) => {
-  const articleId = props.post.articleId
-  // console.log('Article ID Flaged' + articleId);
-}
+// const handleFlag = (props) => {
+//   const articleId = props.post.articleId
+//   // console.log('Article ID Flaged' + articleId);
+// }
 const FeedArticle = (props) => {
    const link = "/articles/"+ props.post.articleId
    // 
-  const flagDisabled = () => { return props.post.flaged == true ? true:false}
+  // const flagDisabled = () => { return props.post.flaged == true ? true:false}
   return (
       <MDBCol md="8">
       <MDBCard style={{ margin: "10px" }}>

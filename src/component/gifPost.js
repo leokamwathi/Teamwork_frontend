@@ -3,7 +3,7 @@ import { MDBCardTitle,MDBCol,MDBCard,MDBCardBody,MDBCardImage } from 'mdbreact';
 import CommentsPage from '../pages/commentsPage'
 
 const FeedGif = (props) => {
-  const link = "/gifs/"+ props.post.gifId
+ // const link = "/gifs/"+ props.post.gifId
   return (
       <MDBCol md="8">
       <MDBCard style={{ margin: "10px" }}>

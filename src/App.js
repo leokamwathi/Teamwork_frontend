@@ -6,7 +6,7 @@ import Routes from './routes';
 function App() {
   return (
       <Router basename={process.env.PUBLIC_URL}>
-          <Routes />
+      <Routes reponame={process.env.PUBLIC_URL} />
         </Router>
   );
 }

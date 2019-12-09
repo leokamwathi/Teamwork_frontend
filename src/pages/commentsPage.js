@@ -30,14 +30,14 @@ getComments = () => {
     })
     .then(res => {
         res.json().then((data)=>{
-          if(!data.data || data.data.length==0){
+          if(!data.data || data.data.length===0){
             return <></>
           }
             const result = data.data.map((comment)=>{
-              console.log(JSON.stringify(comment));
+              // console.log(JSON.stringify(comment));
             return (<CommentsPost key= {comment.commentId} comment={comment}></CommentsPost>)
           })
-          console.log('FEED', result);
+          // console.log('FEED', result);
             resolve(result)
         })
     })
@@ -48,23 +48,26 @@ getComments = () => {
   })}
   
 reLoadComments(){
-  this.setState({ comments: [], checkedComments: false})
+  this.setState({ comments: []})
+  this.getComments().then((data) => {
+    this.setState({ comments: data})
+  }).catch((err) => console.log(err))
 }
 render(){
   const token = localStorage.getItem('token')
   if(!token){
       return <Redirect to="/signin" />
   }
-  if (this.state.comments.length === 0 && this.state.checkedComments){
+  if (this.state.comments.length === 0){
     this.getComments().then((data)=>{
-      this.setState({ comments: data, checkedComments:true})
+      this.setState({ comments: data})
     }).catch((err)=>console.log(err))
   }
   return ( 
     <>
       <MDBContainer> 
           <MDBRow>
-              <CommentsPostPage reLoadComments={()=>this.reLoadComments()} id={this.state.postId}/>
+          <CommentsPostPage reLoadComments={() => this.reLoadComments()} id={this.props.articleId || this.props.gifId || this.state.postId}/>
           </MDBRow>
         <MDBRow>
           {this.state.comments}
